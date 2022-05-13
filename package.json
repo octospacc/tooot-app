@@ -17,10 +17,7 @@
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
-    "iphone": "react-native run-ios",
-    "ipad": "react-native run-ios --simulator 'iPad mini (6th generation)'",
     "app:build": "bundle exec fastlane build",
-    "release": "scripts/release.sh",
     "clean": "react-native-clean-project",
     "postinstall": "patch-package"
   },
