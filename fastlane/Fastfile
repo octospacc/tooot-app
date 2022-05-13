@@ -81,14 +81,8 @@ lane :build do
   else
     puts("Release #{GITHUB_RELEASE} does not exist. Create new release as well as new native build.")
     cocoapods(clean_install: true, podfile: "./ios/Podfile")
-    build_ios
     build_android
-    case ENVIRONMENT
-    when "candidate"
-      github_release(prerelease: true)
-    when "release"
-      github_release(prerelease: false)
-    end
+    github_release(prerelease: false)
   end
   expo_release
   rocket
