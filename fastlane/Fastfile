@@ -11,7 +11,7 @@ ENVIRONMENT = ENV["ENVIRONMENT"]
 VERSION = "#{VERSIONS[:major]}.#{VERSIONS[:minor]}"
 RELEASE_CHANNEL = "#{VERSIONS[:major]}.#{VERSIONS[:minor]}-#{ENVIRONMENT}"
 BUILD_NUMBER = "#{Time.now.strftime("%y%m%d")}#{ENV["GITHUB_RUN_NUMBER"]}"
-GITHUB_REPO = "tooot-app/app"
+GITHUB_REPO = "octospacc/tooot-app"
 case ENVIRONMENT
 when "candidate"
   GITHUB_RELEASE = "v#{VERSION}-#{VERSIONS[:patch]}"
