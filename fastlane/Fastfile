@@ -3,7 +3,7 @@ fastlane_version "2.203.0"
 skip_docs
 
 ensure_env_vars(
-  env_vars: ["ENVIRONMENT", "SENTRY_ORGANIZATION", "SENTRY_PROJECT", "SENTRY_AUTH_TOKEN"]
+  env_vars: ["ENVIRONMENT"]
 )
 
 VERSIONS = read_json( json_path: "./package.json" )[:versions]
@@ -86,11 +86,6 @@ private_lane :build_ios do
       output_directory: BUILD_DIRECTORY,
       silent: true
     )
-    sentry_upload_dsym(
-      org_slug: ENV["SENTRY_ORGANIZATION"],
-      project_slug: ENV["SENTRY_PROJECT"],
-      dsym_path: DSYM_FILE
-    )
     upload_to_testflight(
       skip_submission: true,
       ipa: IPA_FILE,
@@ -110,10 +105,6 @@ private_lane :build_ios do
     )
     upload_to_app_store( ipa: IPA_FILE, app_version: VERSION )
     download_dsyms( version: VERSION, build_number: BUILD_NUMBER, wait_for_dsym_processing: true )
-    sentry_upload_dsym(
-      org_slug: ENV["SENTRY_ORGANIZATION"],
-      project_slug: ENV["SENTRY_PROJECT"],
-    )
   else
     if !is_ci
       match( type: "adhoc", readonly: true )
