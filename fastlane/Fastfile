@@ -62,6 +62,18 @@ private_lane :github_release do |options|
   )
 end
 
+desc "Expo release"
+private_lane :expo_release do
+end
+
+desc "Build and deploy iOS app"
+private_lane :build_ios do
+end
+
+desc "Build and deploy Android app"
+private_lane :build_android do
+end
+
 lane :build do
   releaseExists = get_github_release(url: GITHUB_REPO, version: "v#{VERSION}", api_token: ENV['GH_PAT_GET_RELEASE'])
   if releaseExists
