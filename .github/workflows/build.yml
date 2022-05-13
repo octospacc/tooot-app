@@ -4,6 +4,7 @@ on:
     branches:
       - candidate
       - release
+      - main
 
 jobs:
   build:
