@@ -12,14 +12,7 @@ VERSION = "#{VERSIONS[:major]}.#{VERSIONS[:minor]}"
 RELEASE_CHANNEL = "#{VERSIONS[:major]}.#{VERSIONS[:minor]}-#{ENVIRONMENT}"
 BUILD_NUMBER = "#{Time.now.strftime("%y%m%d")}#{ENV["GITHUB_RUN_NUMBER"]}"
 GITHUB_REPO = "octospacc/tooot-app"
-case ENVIRONMENT
-when "candidate"
-  GITHUB_RELEASE = "v#{VERSION}-#{VERSIONS[:patch]}"
-when "release"
-  GITHUB_RELEASE = "v#{VERSION}"
-else
-  GITHUB_RELEASE= ""
-end
+GITHUB_RELEASE = "v#{VERSION}-#{VERSIONS[:patch]}"
 
 XCODEPROJ = "./ios/tooot.xcodeproj"
 INFO_PLIST = "./ios/tooot/Info.plist"
